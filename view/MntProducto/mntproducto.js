@@ -92,6 +92,7 @@ function editar(prod_id) {
       data = JSON.parse(data);
       $("#prod_id").val(data.prod_id);
       $("#prod_nombre").val(data.prod_nombre);
+      $("#prod_descripcion").val(data.prod_descripcion);
     }
   );
   $("#modalmantenimiento").modal("show");

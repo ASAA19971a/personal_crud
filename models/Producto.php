@@ -38,33 +38,36 @@ class Producto extends Conectar
         return $resultado = $sql->fetchAll();
     }
 
-    public function insert_producto($prod_nombre)
+    public function insert_producto($prod_nombre, $prod_descripcion)
     {
         $conectar = parent::conexion();
         parent::set_names();
         $sql = "INSERT INTO producto
-                    (id, nombre, fecha_crea, fecha_mod, fecha_elim, estado)
+                    (id, nombre, descripcion, fecha_crea, fecha_mod, fecha_elim, estado)
                 VALUES
-                    (NULL, ?, now(), NULL, NULL, 1);";
+                    (NULL, ?, ?, now(), NULL, NULL, 1);";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $prod_nombre);
+        $sql->bindValue(2, $prod_descripcion);
         $sql->execute();
         return $resultado = $sql->fetchAll();
     }
 
-    public function update_producto($prod_id, $prod_nombre)
+    public function update_producto($prod_id, $prod_nombre, $prod_descripcion)
     {
         $conectar = parent::conexion();
         parent::set_names();
         $sql = "UPDATE producto 
                 SET
                     nombre=?,
+                    descripcion=?,
                     fecha_mod=now()
                 WHERE
                     id = ?";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $prod_nombre);
-        $sql->bindValue(2, $prod_id);
+        $sql->bindValue(2, $prod_descripcion);
+        $sql->bindValue(3, $prod_id);
         $sql->execute();
         return $resultado = $sql->fetchAll();
     }

@@ -35,13 +35,15 @@
             <!-- start you own content here -->
             <div class="br-section-wrapper">
                 <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10">Mantenimiento de Producto</h6>
-                <button id="btnnuevo" class="btn btn-outline-success  mg-b-10">Nuevo Registro <i class="fa fa-plus"></i></button>
+                <button id="btnnuevo" class="btn btn-outline-success  mg-b-10">Nuevo Registro <i
+                        class="fa fa-plus"></i></button>
 
                 <div class="table-wrapper">
                     <table id="producto_data" class="table display responsive nowrap">
                         <thead>
                             <tr>
                                 <th class="wd-15p">Nombre</th>
+                                <th class="wd-15p">Descripción</th>
                                 <th class="wd-15p"></th>
                                 <th class="wd-20p"></th>
                             </tr>
