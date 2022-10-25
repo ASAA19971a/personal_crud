@@ -42,11 +42,12 @@ switch ($_GET["op"]) {
 
     case "mostrar":
         $datos = $producto->get_producto_id($_POST["prod_id"]);
-        if (is_array($datos) == true and count($datos) == 0) {
+        if (is_array($datos) == true and count($datos) > 0) {
             foreach ($datos as $row) {
                 $output["prod_id"] = $row["id"];
                 $output["prod_nombre"] = $row["nombre"];
             }
+            echo json_encode($output);
         }
         break;
 

@@ -59,7 +59,7 @@ class Producto extends Conectar
         $sql = "UPDATE producto 
                 SET
                     nombre=?,
-                    fecha_modi=now()
+                    fecha_mod=now()
                 WHERE
                     id = ?";
         $sql = $conectar->prepare($sql);

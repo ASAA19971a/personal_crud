@@ -84,8 +84,20 @@ function guardaryeditar(e) {
 
 //NOTE - Funcion Editar
 function editar(prod_id) {
-  console.log(prod_id);
+  $("#mdltitulo").html("Editar Registro");
+  $.post(
+    "../../controller/producto.php?op=mostrar",
+    { prod_id: prod_id },
+    function (data) {
+      data = JSON.parse(data);
+      $("#prod_id").val(data.prod_id);
+      $("#prod_nombre").val(data.prod_nombre);
+    }
+  );
+  $("#modalmantenimiento").modal("show");
 }
+
+//NOTE - Funcion Eliminar
 function eliminar(prod_id) {
   Swal.fire({
     title: "CRUD",
@@ -117,6 +129,8 @@ function eliminar(prod_id) {
 
 $(document).on("click", "#btnnuevo", function () {
   $("#mdltitulo").html("Nuevo Registro");
+  $("#producto_form")[0].reset();
+  $("#prod_id").val("");
   $("#modalmantenimiento").modal("show");
 });
 init();
