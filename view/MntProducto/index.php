@@ -171,6 +171,7 @@
             <!-- start you own content here -->
             <div class="br-section-wrapper">
                 <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10">Mantenimiento de Producto</h6>
+                <button id="btnnuevo" class="btn btn-outline-success  mg-b-10">Nuevo Registro <i class="fa fa-plus"></i></button>
 
                 <div class="table-wrapper">
                     <table id="producto_data" class="table display responsive nowrap">
@@ -192,6 +193,8 @@
     </div><!-- br-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
 
+    <!-- REQUERIMOS AL MODAL MANTENIMIENTO -->
+    <?php require_once("modalmantenimiento.php"); ?>
 
     <script src="../../public/lib/jquery/jquery.js"></script>
     <script src="../../public/lib/popper.js/popper.js"></script>
@@ -211,6 +214,9 @@
     <script src="../../public/datatables/buttons.html5.min.js"></script>
     <script src="../../public/datatables/buttons.colVis.min.js"></script>
     <script src="../../public/datatables/jszip.min.js"></script>
+
+    <!-- SWEET ALERT -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
     <script src="mntproducto.js"></script>

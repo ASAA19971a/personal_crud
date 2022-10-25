@@ -22,7 +22,7 @@ class Producto extends Conectar
         return $resultado = $sql->fetchAll();
     }
 
-    public function delete_producto_id($prod_id)
+    public function delete_producto($prod_id)
     {
         $conectar = parent::conexion();
         parent::set_names();
@@ -38,7 +38,7 @@ class Producto extends Conectar
         return $resultado = $sql->fetchAll();
     }
 
-    public function insert_producto_id($prod_nombre)
+    public function insert_producto($prod_nombre)
     {
         $conectar = parent::conexion();
         parent::set_names();
@@ -52,7 +52,7 @@ class Producto extends Conectar
         return $resultado = $sql->fetchAll();
     }
 
-    public function update_producto_id($prod_id, $prod_nombre)
+    public function update_producto($prod_id, $prod_nombre)
     {
         $conectar = parent::conexion();
         parent::set_names();
