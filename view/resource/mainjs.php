@@ -17,5 +17,8 @@
 <script src="../../public/datatables/buttons.colVis.min.js"></script>
 <script src="../../public/datatables/jszip.min.js"></script>
 
+<!-- SELECT2 -->
+<script src="../../public/lib/select2/js/select2.min.js"></script>
+
 <!-- SWEET ALERT -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

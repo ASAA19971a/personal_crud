@@ -7,6 +7,15 @@ function init() {
 
 //TODO document Ready para presentar DataTable
 $(document).ready(function () {
+  // inicializa Select 2
+  $("#cat_id").select2({
+    dropdownParent: $("#modalmantenimiento"),
+  });
+
+  $.post("../../controller/categoria.php?op=combo", function (data) {
+    $("#cat_id").html(data);
+    console.log(data);
+  });
   tabla = $("#producto_data")
     .dataTable({
       aProcessing: true, //Activamos el procesamiento del datatables
@@ -91,8 +100,10 @@ function editar(prod_id) {
     function (data) {
       data = JSON.parse(data);
       $("#prod_id").val(data.prod_id);
+      $("#cat_id").val(data.cat_id).trigger("change");
       $("#prod_nombre").val(data.prod_nombre);
       $("#prod_descripcion").val(data.prod_descripcion);
+      $("#prod_cantidad").val(data.prod_cantidad);
     }
   );
   $("#modalmantenimiento").modal("show");
@@ -129,9 +140,10 @@ function eliminar(prod_id) {
 }
 
 $(document).on("click", "#btnnuevo", function () {
+  $("#prod_id").val("");
+  $("#cat_id").val("").trigger("change");
   $("#mdltitulo").html("Nuevo Registro");
   $("#producto_form")[0].reset();
-  $("#prod_id").val("");
   $("#modalmantenimiento").modal("show");
 });
 init();

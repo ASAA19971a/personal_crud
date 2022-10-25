@@ -5,7 +5,19 @@ class Producto extends Conectar
     {
         $conectar = parent::conexion();
         parent::set_names();
-        $sql = "SELECT * FROM producto WHERE estado = 1";
+        $sql = "SELECT 
+                    producto.id,
+                    producto.cat_id,
+                    producto.nombre,
+                    producto.descripcion,
+                    producto.cantidad,
+                    categoria.cat_nombre
+                FROM 
+                    producto INNER JOIN
+                    categoria ON
+                    producto.cat_id=categoria.id
+                WHERE producto.estado = 1";
+
         $sql = $conectar->prepare($sql);
         $sql->execute();
         return $resultado = $sql->fetchAll();
@@ -38,36 +50,42 @@ class Producto extends Conectar
         return $resultado = $sql->fetchAll();
     }
 
-    public function insert_producto($prod_nombre, $prod_descripcion)
+    public function insert_producto($cat_id, $prod_nombre, $prod_descripcion, $cantidad)
     {
         $conectar = parent::conexion();
         parent::set_names();
         $sql = "INSERT INTO producto
-                    (id, nombre, descripcion, fecha_crea, fecha_mod, fecha_elim, estado)
+                    (id, cat_id, nombre, descripcion, cantidad, fecha_crea, fecha_mod, fecha_elim, estado)
                 VALUES
-                    (NULL, ?, ?, now(), NULL, NULL, 1);";
+                    (NULL, ?, ?, ?, ?, now(), NULL, NULL, 1);";
         $sql = $conectar->prepare($sql);
-        $sql->bindValue(1, $prod_nombre);
-        $sql->bindValue(2, $prod_descripcion);
+        $sql->bindValue(1, $cat_id);
+        $sql->bindValue(2, $prod_nombre);
+        $sql->bindValue(3, $prod_descripcion);
+        $sql->bindValue(4, $cantidad);
         $sql->execute();
         return $resultado = $sql->fetchAll();
     }
 
-    public function update_producto($prod_id, $prod_nombre, $prod_descripcion)
+    public function update_producto($prod_id, $cat_id, $prod_nombre, $prod_descripcion, $cantidad)
     {
         $conectar = parent::conexion();
         parent::set_names();
         $sql = "UPDATE producto 
                 SET
+                    cat_id=?,
                     nombre=?,
                     descripcion=?,
+                    cantidad=?,
                     fecha_mod=now()
                 WHERE
                     id = ?";
         $sql = $conectar->prepare($sql);
-        $sql->bindValue(1, $prod_nombre);
-        $sql->bindValue(2, $prod_descripcion);
-        $sql->bindValue(3, $prod_id);
+        $sql->bindValue(1, $cat_id);
+        $sql->bindValue(2, $prod_nombre);
+        $sql->bindValue(3, $prod_descripcion);
+        $sql->bindValue(4, $cantidad);
+        $sql->bindValue(5, $prod_id);
         $sql->execute();
         return $resultado = $sql->fetchAll();
     }
