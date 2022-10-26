@@ -18,6 +18,7 @@
         </a><!-- br-menu-link -->
         <ul class="br-menu-sub nav flex-column">
             <li class="nav-item"><a href="../MntProducto/" class="nav-link">Producto</a></li>
+            <li class="nav-item"><a href="../MntCliente/" class="nav-link">Cliente</a></li>
         </ul>
 
     </div><!-- br-sideleft-menu -->
@@ -31,7 +32,8 @@
                 </p>
                 <h5 class="tx-lato tx-white tx-normal mg-b-0">32.3%</h5>
             </div>
-            <span class="peity-bar" data-peity='{ "fill": ["#336490"], "height": 35, "width": 60 }'>8,6,5,9,8,4,9,3,5,9</span>
+            <span class="peity-bar"
+                data-peity='{ "fill": ["#336490"], "height": 35, "width": 60 }'>8,6,5,9,8,4,9,3,5,9</span>
         </div><!-- d-flex -->
 
         <div class="d-flex align-items-center justify-content-between pd-x-15 mg-t-20">
@@ -39,7 +41,8 @@
                 <p class="tx-10 tx-roboto tx-uppercase tx-spacing-1 tx-white op-3 mg-b-2 space-nowrap">CPU Usage</p>
                 <h5 class="tx-lato tx-white tx-normal mg-b-0">140.05</h5>
             </div>
-            <span class="peity-bar" data-peity='{ "fill": ["#1C7973"], "height": 35, "width": 60 }'>4,3,5,7,12,10,4,5,11,7</span>
+            <span class="peity-bar"
+                data-peity='{ "fill": ["#1C7973"], "height": 35, "width": 60 }'>4,3,5,7,12,10,4,5,11,7</span>
         </div><!-- d-flex -->
 
         <div class="d-flex align-items-center justify-content-between pd-x-15 mg-t-20">
@@ -48,7 +51,8 @@
                 </p>
                 <h5 class="tx-lato tx-white tx-normal mg-b-0">82.02%</h5>
             </div>
-            <span class="peity-bar" data-peity='{ "fill": ["#8E4246"], "height": 35, "width": 60 }'>1,2,1,3,2,10,4,12,7</span>
+            <span class="peity-bar"
+                data-peity='{ "fill": ["#8E4246"], "height": 35, "width": 60 }'>1,2,1,3,2,10,4,12,7</span>
         </div><!-- d-flex -->
 
         <div class="d-flex align-items-center justify-content-between pd-x-15 mg-t-20">
@@ -57,7 +61,8 @@
                 </p>
                 <h5 class="tx-lato tx-white tx-normal mg-b-0">62,201</h5>
             </div>
-            <span class="peity-bar" data-peity='{ "fill": ["#9C7846"], "height": 35, "width": 60 }'>3,12,7,9,2,3,4,5,2</span>
+            <span class="peity-bar"
+                data-peity='{ "fill": ["#9C7846"], "height": 35, "width": 60 }'>3,12,7,9,2,3,4,5,2</span>
         </div><!-- d-flex -->
     </div><!-- info-lst -->
 

@@ -1,29 +1,20 @@
 var tabla;
 function init() {
-  $("#producto_form").on("submit", function (e) {
+  $("#cliente_form").on("submit", function (e) {
     guardaryeditar(e);
   });
 }
 
 //TODO document Ready para presentar DataTable
 $(document).ready(function () {
-  // inicializa Select 2
-  $("#cat_id").select2({
-    dropdownParent: $("#modalmantenimiento"),
-  });
-
-  $.post("../../controller/categoria.php?op=combo", function (data) {
-    $("#cat_id").html(data);
-    console.log(data);
-  });
-  tabla = $("#producto_data")
+  tabla = $("#cliente_data")
     .dataTable({
       aProcessing: true, //Activamos el procesamiento del datatables
       aServerSide: true, //Paginación y filtrado realizados por el servidor
       dom: "Bfrtip", //Definimos los elementos del control de tabla
       buttons: ["copyHtml5", "excelHtml5", "csvHtml5", "pdf"],
       ajax: {
-        url: "../../controller/producto.php?op=listar", //NOTE - Se llama al controlador
+        url: "../../controller/cliente.php?op=listar", //NOTE - Se llama al controlador
         type: "get",
         dataType: "json",
         error: function (e) {
@@ -69,49 +60,44 @@ $(document).ready(function () {
 
 function guardaryeditar(e) {
   e.preventDefault();
-  var formData = new FormData($("#producto_form")[0]);
+  var formData = new FormData($("#cliente_form")[0]);
 
   $.ajax({
-    url: "../../controller/producto.php?op=guardaryeditar",
+    url: "../../controller/cliente.php?op=guardaryeditar",
     type: "POST",
     data: formData,
     contentType: false,
     processData: false,
     success: function (datos) {
-      $("#producto_form")[0].reset();
+      $("#cliente_form")[0].reset();
       $("#modalmantenimiento").modal("hide");
-      $("#producto_data").DataTable().ajax.reload();
+      $("#cliente_data").DataTable().ajax.reload();
 
-      swal.fire(
-        "Registro",
-        "El producto se registro correctamente.",
-        "success"
-      );
-      $("#producto_data").DataTable().ajax.reload();
+      swal.fire("Registro", "El cliente se registro correctamente.", "success");
+      $("#cliente_data").DataTable().ajax.reload();
     },
   });
 }
 
 //NOTE - Funcion Editar
-function editar(prod_id) {
+function editar(cliente_id) {
   $("#mdltitulo").html("Editar Registro");
   $.post(
-    "../../controller/producto.php?op=mostrar",
-    { prod_id: prod_id },
+    "../../controller/cliente.php?op=mostrar",
+    { cliente_id: cliente_id },
     function (data) {
       data = JSON.parse(data);
-      $("#prod_id").val(data.prod_id);
-      $("#cat_id").val(data.cat_id).trigger("change");
-      $("#prod_nombre").val(data.prod_nombre);
-      $("#prod_descripcion").val(data.prod_descripcion);
-      $("#prod_cantidad").val(data.prod_cantidad);
+      $("#cliente_id").val(data.cliente_id);
+      $("#cliente_nombre").val(data.cliente_nombre);
+      $("#cliente_mail").val(data.cliente_mail);
+      $("#cliente_celular").val(data.cliente_celular);
     }
   );
   $("#modalmantenimiento").modal("show");
 }
 
 //NOTE - Funcion Eliminar
-function eliminar(prod_id) {
+function eliminar(cliente_id) {
   Swal.fire({
     title: "CRUD",
     text: "Desea eliminar el Registro",
@@ -125,11 +111,11 @@ function eliminar(prod_id) {
   }).then((result) => {
     if (result.isConfirmed) {
       $.post(
-        "../../controller/producto.php?op=eliminar",
-        { prod_id: prod_id },
+        "../../controller/cliente.php?op=eliminar",
+        { cliente_id: cliente_id },
         function (data) {}
       );
-      $("#producto_data").DataTable().ajax.reload();
+      $("#cliente_data").DataTable().ajax.reload();
 
       Swal.fire(
         "Eliminado!",
@@ -141,10 +127,9 @@ function eliminar(prod_id) {
 }
 
 $(document).on("click", "#btnnuevo", function () {
-  $("#prod_id").val("");
-  $("#cat_id").val("").trigger("change");
+  $("#cliente_id").val("");
   $("#mdltitulo").html("Nuevo Registro");
-  $("#producto_form")[0].reset();
+  $("#cliente_form")[0].reset();
   $("#modalmantenimiento").modal("show");
 });
 init();
