@@ -1,6 +1,6 @@
 <!-- LARGE MODAL -->
 <div id="modalmantenimiento" class="modal fade">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-lg w-100" role="document">
         <div class="modal-content ">
             <form method="POST" id="cliente_form">
                 <div class="modal-header pd-x-20">

@@ -1,6 +1,5 @@
-<div id="modalmantenimiento" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog  w-100" role="document">
+<div id="modalmantenimiento" class="modal fade">
+    <div class="modal-dialog modal-lg w-100" role="document">
         <div class="modal-content">
             <form method="POST" id="producto_form">
                 <div class="modal-header">
